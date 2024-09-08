@@ -63,11 +63,18 @@ public class Sum_of_Subarray_min_907 {
             stack.push(i);
         }
 
-        //store the
+        // storing the mod value as per constraints
         int mod = (int) 1e9 + 7;
+        // variable to store the value
         long answer = 0;
 
+        // we traverse the array till length to get the answer
         for (int i = 0; i < length; ++i) {
+            /*
+            * we use the formula where eventually get the number of sub-arrays of
+            * arr[i] from left and right and we multiply that and get the total number of sub-arrays
+            * of arr[i] and then again multiply it with arr[i] to get the number of times it will
+            * appear as minimum in all its sub-array*/
             answer += (long) (i - left[i]) * (right[i] - i) % mod * arr[i] % mod;
             answer %= mod;
         }
